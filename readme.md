@@ -43,7 +43,7 @@ Certifique-se de ter o [Node.js](https://nodejs.org/en/) (versão 18 ou superior
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/marcosmvr/DevQuiz.git](https://github.com/marcosmvr/DevQuiz.git)
+    git clone https://github.com/marcosmvr/DevQuiz.git
     cd devquiz
     ```
 
