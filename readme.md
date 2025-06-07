@@ -16,7 +16,7 @@ Criar uma aplicação back-end utilizando **Fastify** e **TypeScript**, aplicand
 
 ## 📌 Funcionalidades
 
-- [ ] Obter uma lista de perguntas aleatórias sobre ciência da computação.
+- [x] Obter uma lista de perguntas aleatórias sobre ciência da computação.
 - [ ] Responder perguntas individualmente com validação da resposta correta.
 - [ ] Controlar sessão de quiz por usuário (simulado via ID).
 - [ ] Pontuação acumulativa por sessão.
