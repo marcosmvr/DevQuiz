@@ -54,6 +54,17 @@ Certifique-se de ter o [Node.js](https://nodejs.org/en/) (versão 18 ou superior
     yarn install
     ```
 
+## 🛠️ Configuração de Ambiente
+
+Este projeto utiliza variáveis de ambiente para gerenciar configurações sensíveis ou que podem mudar entre diferentes ambientes (desenvolvimento, produção, etc.).
+Variáveis Necessárias
+
+Crie um arquivo chamado .env na raiz do projeto (no mesmo nível do package.json). Dentro dele, adicione a seguinte linha:
+
+```bash
+API_QUIZ_URL=https://opentdb.com/api.php
+```
+
 ### Execução
 
 Para iniciar o quiz, utilize o seguinte comando:
