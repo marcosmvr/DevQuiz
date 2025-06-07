@@ -1,130 +1,107 @@
-# DevQuiz - Quiz de Programação e Ciência da Computação
+# 📚 DevQuiz CLI
 
-## 🧠 Visão Geral
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
+![Inquirer.js](https://img.shields.io/badge/Inquirer.js-FF69B4?style=for-the-badge&logo=npm&logoColor=white)
 
-O **DevQuiz** é uma API REST que fornece quizzes sobre ciência da computação, programação e temas relacionados. O sistema permite que o usuário inicie uma sessão de perguntas de múltipla escolha, responda uma a uma e receba validações imediatas sobre acertos e erros.
-
-As perguntas serão obtidas dinamicamente da API pública [Open Trivia Database](https://opentdb.com/) na categoria “Science: Computers”.
-
----
-
-## 🎯 Objetivo
-
-Criar uma aplicação back-end utilizando **Fastify** e **TypeScript**, aplicando princípios básicos de arquitetura limpa (Clean Architecture) e boas práticas de organização de código, validação e responsabilidade de serviços (princípios SOLID).
+Um quiz de programação simples e interativo para o terminal, construído com **TypeScript** e **Node.js**. Este projeto consome uma API externa para buscar perguntas e oferece uma experiência de quiz diretamente na linha de comando.
 
 ---
 
-## 📌 Funcionalidades
+## 🌟 Sobre o Projeto
 
-- [x] Obter uma lista de perguntas aleatórias sobre ciência da computação.
-- [ ] Responder perguntas individualmente com validação da resposta correta.
-- [ ] Controlar sessão de quiz por usuário (simulado via ID).
-- [ ] Pontuação acumulativa por sessão.
-- [ ] Possibilidade futura de rankings e níveis de dificuldade.
+O **DevQuiz CLI** foi criado como um projeto de estudo para aprofundar conhecimentos em:
 
----
-
-## 🔗 Integração externa
-
-A API se conecta à Open Trivia DB com os seguintes parâmetros:
-
-GET https://opentdb.com/api.php?amount=5&category=18&type=multiple
-
-* `amount`: número de perguntas solicitadas.
-* `category=18`: categoria "Science: Computers".
-* `type=multiple`: somente perguntas de múltipla escolha.
+* **Consumo de APIs RESTful**: Integrando dados de uma API externa de forma assíncrona.
+* **Programação Assíncrona**: Utilizando `async/await` para um fluxo de código mais limpo.
+* **Estrutura de Projeto**: Aplicando princípios de separação de responsabilidades (Service, Controller, CLI).
+* **Tipagem com TypeScript**: Garantindo maior segurança e clareza no código.
+* **Interação com o Usuário**: Desenvolvendo uma interface de linha de comando amigável com `Inquirer.js`.
 
 ---
 
-## 🛠️ Tecnologias Recomendadas
+## ✨ Funcionalidades
 
-* **Fastify** (framework HTTP rápido e modular)
-* **TypeScript** (para tipagem segura)
-* **Axios ou Node Fetch** (para chamadas HTTP)
-* **Zod ou similar** (para validações)
-* **uuid** (para IDs únicos de sessões)
-* **Arquitetura limpa** (leve):
-
-  * `/routes`
-  * `/controllers`
-  * `/services`
-  * `/utils` (validações, formatações)
-  * `/entities` (opcional)
+* Busca de perguntas de programação de uma API externa.
+* Múltiplas opções de resposta para cada pergunta.
+* Feedback instantâneo sobre acerto ou erro.
+* Contagem de pontuação final.
+* Perguntas e opções embaralhadas para maior dinamismo.
 
 ---
 
-## 📁 Estrutura Sugerida
+## 🚀 Como Executar
 
-```
-src/
-├── controllers/
-│   └── quizController.ts
-├── services/
-│   └── quizService.ts
-├── routes/
-│   └── quizRoutes.ts
-├── utils/
-│   └── responseValidator.ts
-├── main.ts
+Para rodar este projeto em sua máquina, siga os passos abaixo:
+
+### Pré-requisitos
+
+Certifique-se de ter o [Node.js](https://nodejs.org/en/) (versão 18 ou superior recomendada) e o [npm](https://www.npmjs.com/) (ou Yarn) instalados em seu sistema.
+
+### Instalação
+
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/marcosmvr/DevQuiz.git](https://github.com/marcosmvr/DevQuiz.git)
+    cd devquiz
+    ```
+
+2.  **Instale as dependências:**
+    ```bash
+    npm install
+    # ou
+    yarn install
+    ```
+
+### Execução
+
+Para iniciar o quiz, utilize o seguinte comando:
+
+```bash
+npm run dev
+# ou
+yarn dev
 ```
 
----
-
-## 🔄 Fluxo de Uso
-
-1. **Início da sessão:**
-
-   * `GET /quiz?amount=5`
-   * Resposta: array com 5 perguntas formatadas.
-
-2. **Envio de resposta:**
-
-   * `POST /quiz/answer`
-   * Body:
-
-     ```json
-     {
-       "sessionId": "abc-123",
-       "questionId": "q1",
-       "selectedAnswer": "HyperText Transfer Protocol"
-     }
-     ```
-   * Resposta: se acertou, pontuação atual, próxima pergunta (ou fim).
+O quiz será iniciado no seu terminal, apresentando as perguntas uma a uma.
 
 ---
 
-## ✅ Regras de Validação
+## 📁 Estrutura do Projeto
 
-* Uma pergunta só pode ser respondida uma vez por sessão.
-* Pontuação: +1 por acerto, 0 por erro.
-* Respostas devem ser case-insensitive.
-* Não há persistência em banco neste MVP. Sessões podem ser mantidas em memória (por exemplo, via Map).
+O projeto segue uma arquitetura modular para facilitar a manutenção e o entendimento:
 
----
-
-## 🎨 Extras opcionais (não obrigatórios)
-
-* Controle de tempo por pergunta (timer em segundos).
-* Níveis de dificuldade (easy, medium, hard).
-* Filtro por tipo de pergunta (verdadeiro/falso, múltipla escolha).
-* Suporte a múltiplas categorias no futuro.
-* Geração de relatório ao fim do quiz.
-
----
-
-## 👨‍💻 Perfil do Desenvolvedor
-
-Esse projeto é ideal para demonstrar domínio sobre:
-
-* Requisições externas;
-* Validações com TypeScript;
-* Estruturação limpa de projetos back-end;
-* Fastify e manipulação de rotas HTTP REST.
+```
+devquiz/
+├── src/
+│   ├── cli/
+│   │   └── quiz-cli.ts           # Lógica principal da interface de linha de comando.
+│   ├── controllers/
+│   │   └── quiz-controller.ts    # Orquestra a lógica de negócio do quiz.
+│   ├── services/
+│   │   └── quiz-service.ts       # Lida com a comunicação com a API externa e formatação dos dados.
+│   └── utils/
+│       └── shuffle.ts            # Funções utilitárias, como embaralhar arrays.
+├── package.json                  # Dependências e scripts do projeto.
+├── tsconfig.json                 # Configurações do TypeScript.
+└── README.md                     # Este arquivo.
+```
 
 ---
 
-## 🧪 Testes (opcional)
+## 🤝 Contribuição
 
-* Recomendado utilizar `vitest` ou `jest` para testes unitários das validações de resposta e lógica de pontuação.
-* Mocks podem ser utilizados para simular chamadas externas à API do Open Trivia.
+Contribuições são sempre bem-vindas! Se você tiver sugestões, encontrar um bug ou quiser adicionar novas funcionalidades, sinta-se à vontade para abrir uma *issue* ou enviar um *pull request*.
 
+---
+
+
+## 📞 Contato
+
+Se você tiver alguma dúvida ou sugestão, pode entrar em contato através do meu perfil no GitHub.
+
+---
+
+✨ Feito com ❤️ por [Marcos]
+```
